@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import { generateId, getNewExpirationTime } from './utilities';
+import React, { useState } from "react";
+import { generateId, getNewExpirationTime } from "./utilities";
 
 export function AddThoughtForm(props) {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const handleTextChange = (event) => {
     setText(event.target.value);
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const thought = {
-      id: generateId(),
-      text: text,
-      expiresAt: getNewExpirationTime(),
+    if (text.length > 0) {
+      const thought = {
+        id: generateId(),
+        text: text,
+        expiresAt: getNewExpirationTime(),
+      };
+      props.addThought(thought);
+      setText("");
     }
-    props.addThought(thought);
-    }
-  
+  };
 
   return (
-    <form className="AddThoughtForm"
-          onSubmit={handleSubmit}>
+    <form className="AddThoughtForm" onSubmit={handleSubmit}>
       <input
         value={text}
         onChange={handleTextChange}
