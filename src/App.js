@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { AddThoughtForm } from './AddThoughtForm';
 import { Thought } from './Thought';
-import { generateId, getNewExpirationTime } from './utilities';
+import { getNewExpirationTime } from './utilities';
 
 export default function App() {
   const [thoughts, setThoughts] = useState([
     {
-      id: generateId(),
+      id: 0,
       text: 'This is a place for your passing thoughts.',
       expiresAt: getNewExpirationTime(),
     },
     {
-      id: generateId(),
+      id: 1,
       text: "They'll be removed after 15 seconds.",
       expiresAt: getNewExpirationTime(),
     },
